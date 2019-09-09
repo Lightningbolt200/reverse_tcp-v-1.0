@@ -31,19 +31,6 @@ def upload():                                            #up;oad file
     f.write(string.decode('base64'))
     f.close()
     
-
-def live_webcam():                                          #webcam
-    while True:
-        try:
-            camera = cv2.VideoCapture(0)
-            grabbed, frame = camera.read()
-            encoded, buffer = cv2.imencode('.jpg', frame)
-            jpg_as_text = base64.b64encode(buffer)
-            c.send(jpg_as_text)
-        except KeyboardInterrupt:
-             camera.release()
-             cv2.destroyAllWindows()
-             break
     
         
     
