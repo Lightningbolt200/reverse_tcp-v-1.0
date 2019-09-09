@@ -34,20 +34,6 @@ while (message != 'q'):
         f=open("screenshot1.png",'wb')
         f.write(data)
         f.close()
-    if(message=="live_webcam()"):              #live stream
-        while True:
-            try:
-                frame = s.recv(102400)
-                img = base64.b64decode(frame)
-                npimg = np.fromstring(img, dtype=np.uint8)
-                source = cv2.imdecode(npimg, 1)
-                cv2.imshow("Stream", source)
-                cv2.waitKey(5)
-                if cv2.waitKey(100) & 0xff == ord('q'):
-                    break
-            except KeyboardInterrupt:
-                cv2.destroyAllWindows()
-                break
     if(message=="upload()"):              #upload
         a=''
         b=''
